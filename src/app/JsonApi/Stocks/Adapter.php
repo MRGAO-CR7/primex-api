@@ -4,6 +4,7 @@ namespace App\JsonApi\Stocks;
 
 use CloudCreativity\LaravelJsonApi\Eloquent\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
+use CloudCreativity\LaravelJsonApi\Document\ResourceObject;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use App\Models\Stock;
@@ -53,5 +54,15 @@ class Adapter extends AbstractAdapter
     public function getResourceLinks($resource)
     {
         return [];
+    }
+
+    /**
+     * @param Stock $Stock
+     * @param ResourceObject $resource
+     * @return void
+     */
+    protected function creating(Stock $Stock, ResourceObject $resource)
+    {
+        $Stock->product()->associate($resource['products']['id']);
     }
 }

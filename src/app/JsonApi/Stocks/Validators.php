@@ -43,7 +43,9 @@ class Validators extends AbstractValidators
     protected function rules($record, array $data): array
     {
         return [
-            //
+            'on_hand' => 'required|integer',
+            'production_date' => 'required|string|date_format:Y-m-d',
+            'products.id' => 'required|integer',
         ];
     }
 

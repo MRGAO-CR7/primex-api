@@ -4,12 +4,15 @@ namespace App\JsonApi\Products;
 
 use CloudCreativity\LaravelJsonApi\Eloquent\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
+use CloudCreativity\LaravelJsonApi\Eloquent\Concerns\SoftDeletesModels;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use App\Models\Product;
 
 class Adapter extends AbstractAdapter
 {
+
+    use SoftDeletesModels;
 
     /**
      * Mapping of JSON API attribute field names to model keys.

@@ -8,6 +8,7 @@ use CloudCreativity\LaravelJsonApi\Document\ResourceObject;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use App\Models\Stock;
+use App\Models\Product;
 
 class Adapter extends AbstractAdapter
 {
@@ -57,12 +58,24 @@ class Adapter extends AbstractAdapter
     }
 
     /**
-     * @param Stock $Stock
+     * @param Stock $stock
      * @param ResourceObject $resource
      * @return void
      */
-    protected function creating(Stock $Stock, ResourceObject $resource)
+    protected function creating(Stock $stock, ResourceObject $resource)
     {
-        $Stock->product()->associate($resource['products']['id']);
+        $stock->product()->associate($resource['products']['id']);
+    }
+
+    /**
+     * @param Stock $stock
+     * @param ResourceObject $resource
+     * @return void
+     */
+    protected function created(Stock $stock, ResourceObject $resource)
+    {
+        $product = Product::find($resource['products']['id']);
+        $product->on_hand += $stock['on_hand'];
+        $product->save();
     }
 }

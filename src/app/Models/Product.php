@@ -40,14 +40,4 @@ class Product extends Model
         return 'deleted_at';
     }
 
-    /**
-     * Get the total of on_hand.
-     *
-     * @return string
-     */
-    public function getOnHandAttribute()
-    {
-        return $this->stocks()->sum('on_hand');
-    }
-
 }

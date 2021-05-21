@@ -38,6 +38,7 @@ class Schema extends SchemaProvider
     {
         $attributes['code'] = (string) $resource['code'];
         $attributes['name'] = $resource['name'];
+        $attributes['on_hand'] = $resource['on_hand'];
         $attributes['description'] = (string) $resource['description'];
         $attributes['created_at'] = (string) $resource['created_at'];
         $attributes['updated_at'] = (string) $resource['updated_at'];

@@ -21,7 +21,9 @@ Route::group([
     'namespace' => 'JsonApi',
 ], function () {
     JsonApi::register('v1')->routes(function ($api) {
-        $api->resource('products')->except('delete');
+        $api->resource('products')->except('delete')->relationships(function ($relations) {
+            $relations->hasMany('stocks')->readOnly();
+        });
         $api->resource('stocks')->only('create');
     });
 });

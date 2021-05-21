@@ -66,4 +66,14 @@ class Adapter extends AbstractAdapter
         return [];
     }
 
+    /**
+     * Get the data of the relationship.
+     *
+     * @return array
+     */
+    protected function stocks()
+    {
+        return $this->hasMany('stocks');
+    }
+
 }

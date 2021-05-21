@@ -45,6 +45,14 @@ class Adapter extends AbstractAdapter
      */
     protected function filter($query, Collection $filters)
     {
+        if ('true' === $filters->get('withTrashed')) {
+            $query->withTrashed();
+            unset($filters['withTrashed']);
+        } else if ('true' == $filters->get('onlyTrashed')) {
+            $query->onlyTrashed();
+            unset($filters['onlyTrashed']);
+        }
+
         $this->filterWithScopes($query, $filters);
     }
 

@@ -23,7 +23,7 @@ class Stock extends Model
     ];
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
     public function product()
     {

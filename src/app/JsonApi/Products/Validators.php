@@ -13,7 +13,9 @@ class Validators extends AbstractValidators
      * @var string[]|null
      *      the allowed paths, an empty array for none allowed, or null to allow all paths.
      */
-    protected $allowedIncludePaths = [];
+    protected $allowedIncludePaths = [
+        'stocks'
+    ];
 
     /**
      * The sort field names a client is allowed send.
@@ -29,7 +31,10 @@ class Validators extends AbstractValidators
      * @var string[]|null
      *      the allowed filters, an empty array for none allowed, or null to allow all.
      */
-    protected $allowedFilteringParameters = [];
+    protected $allowedFilteringParameters = [
+        'withTrashed',
+        'onlyTrashed',
+    ];
 
     /**
      * Get resource validation rules.

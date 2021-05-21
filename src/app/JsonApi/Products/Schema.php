@@ -55,4 +55,24 @@ class Schema extends SchemaProvider
     {
         return [];
     }
+
+    /**
+     * @param Stock $resource
+     * @param bool $isPrimary
+     * @param array $includeRelationships
+     * @return array
+     */
+    public function getRelationships($resource, $isPrimary, array $includeRelationships)
+    {
+        return [
+            'stocks' => [
+                self::SHOW_SELF => false,
+                self::SHOW_RELATED => false,
+                self::SHOW_DATA => true,
+                self::DATA => function () use ($resource) {
+                    return $resource->stocks;
+                },
+            ],
+        ];
+    }
 }

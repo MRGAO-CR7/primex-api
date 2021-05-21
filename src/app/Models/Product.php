@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Stock;
 
 class Product extends Model
 {
@@ -22,13 +23,21 @@ class Product extends Model
     ];
 
     /**
+     * @return HasMany
+     */
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class);
+    }
+
+    /**
      * Get the value of deleted_at.
      *
      * @return string
      */
     public function getDeletedAtColumn()
     {
-        return $this->deleted_at;
+        return 'deleted_at';
     }
 
 }

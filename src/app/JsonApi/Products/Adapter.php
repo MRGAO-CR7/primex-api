@@ -47,10 +47,18 @@ class Adapter extends AbstractAdapter
     {
         if ('true' === $filters->get('withTrashed')) {
             $query->withTrashed();
-            unset($filters['withTrashed']);
         } else if ('true' == $filters->get('onlyTrashed')) {
             $query->onlyTrashed();
-            unset($filters['onlyTrashed']);
+        } else if ($filters->has('quantity') && $filters->has('operator')) {
+            $query->where('on_hand', $filters->get('operator'), $filters->get('quantity'));
+        }
+
+        // Unset all filters which are not the fields of the table.
+        $lstUnset = ['withTrashed', 'onlyTrashed', 'quantity', 'operator'];
+        foreach ($lstUnset as $value) {
+            if ($filters->has($value)) {
+                unset($filters[$value]);
+            }
         }
 
         $this->filterWithScopes($query, $filters);

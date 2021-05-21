@@ -36,6 +36,8 @@ class Validators extends AbstractValidators
     protected $allowedFilteringParameters = [
         'withTrashed',
         'onlyTrashed',
+        'quantity',
+        'operator',
     ];
 
     /**

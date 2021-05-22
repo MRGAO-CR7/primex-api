@@ -51,9 +51,17 @@ class Validators extends AbstractValidators
      */
     protected function rules($record, array $data): array
     {
-        return [
-            //
+        $rules = [
+            'code' => 'required|string|between:1,45',
+            'name' => 'required|string|between:1,45',
+            'description' => 'required|string|between:1,100',
+            'on_hand' => 'disallowed_parameter',
+            'created_at' => 'disallowed_parameter',
+            'updated_at' => 'disallowed_parameter',
+            'deleted_at' => 'disallowed_parameter',
         ];
+
+        return $record ? [] : $rules;
     }
 
     /**

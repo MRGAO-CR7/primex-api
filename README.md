@@ -23,12 +23,14 @@ The SQL script file is in the folder of [/sql].
 - Able to bulk (5k +) insert/update products into database
 - Able to bulk (20k +) insert stock into the database.
 ``` Note:
-This part could be done by using an asynchronous messaging service that decouples services that produce events from services that process events. E.g. (PubSub, RabbitMQ etc.)
+This part could be done by using an asynchronous messaging service that decouples services
+that produce events from services that process events. E.g. (PubSub, RabbitMQ etc.)
 
 Steps:
 1, A publisher (front-end) application creates and sends messages to a topic.
 2, Pub/Sub (Cloud) forwards messages from a topic to all of its subscriptions, individually.
-3, A subscriber (back-end) deals with the messages via both ways of saving into DB directly or sending requests to the endpoints.
+3, A subscriber (back-end) deals with the messages via both ways of saving into DB directly
+   or sending requests to the endpoints.
 ```
 
 

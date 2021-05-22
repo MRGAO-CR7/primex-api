@@ -30,14 +30,4 @@ class Product extends Model
         return $this->hasMany(Stock::class);
     }
 
-    /**
-     * Get the value of deleted_at.
-     *
-     * @return string
-     */
-    public function getDeletedAtColumn()
-    {
-        return 'deleted_at';
-    }
-
 }

@@ -1,18 +1,23 @@
-# Verification Service
+# PrimeX API
 
 This API service is the example codes for the PrimeXConnect Backend Developer API and coding challenge.
 
-## Development
 
 ## Requirements
 ### 1. Create a new Laravel/Lumen Project.
-I chose `"laravel/framework": "^8.40"` and `"cloudcreativity/laravel-json-api": "^3.3"` instead.
+Used `"laravel/framework": "^8.40"` and `"cloudcreativity/laravel-json-api": "^3.3"` instead.
 
 ### 2. Setup a database using the following diagram.
 The SQL script file is in the folder of [/sql].
 
-### 3. Create the following API routes
+### 3. Create the following API routes (refer to [Resources](#resources) below)
 - Add, Update, Delete product.
+- Add a stock onHand for a product.
+- Able to get products and product details.
+- Able to pass optional stock parameter in get products and product details API
+- get stock onHand summary.
+- Able to sort products by stock onHand by both asc and desc order.
+- Able to filter products by stock availability.
 
 ???????????????????????????? more ?????????????????????
 
@@ -23,11 +28,6 @@ The SQL script file is in the folder of [/sql].
 
 
 
-## URI
-
-```sh
-https://api.primex.io/premex-api/v1
-```
 
 ## Resources
 

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AcceptsJsonApi;
+use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'middleware' => [
+        AcceptsJsonApi::class,
+    ],
+    'namespace' => 'JsonApi',
+], function () {
+    JsonApi::register('v1')->routes(function ($api) {
+        $api->resource('products')->except('delete')->relationships(function ($relations) {
+            $relations->hasMany('stocks')->readOnly();
+        });
+        $api->resource('stocks')->only('create');
+    });
 });

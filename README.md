@@ -684,18 +684,119 @@ https://api.primex.io/premex-api/v1
 }
 ```
 
-#### Products get - Sort products by stock onHand by both ASC or DESC order
+#### Products get - sort products by stock onHand by both ASC or DESC order
 ```
-- DESC
+DESC:
 > GET /premex-api/v1/products?sort=-on_hand&filter[withTrashed]=true&page[number]=1&page[size]=5
-- ASC
+
+ASC:
 > GET /premex-api/v1/products?sort=on_hand&filter[withTrashed]=true&page[number]=1&page[size]=5
 ```
 
+#### Products get - filter products by stock availability
+```
+Where on_hand = 100:
+> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]==&page[number]=1&page[size]=5
+
+Where on_hand > 100:
+> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=>&page[number]=1&page[size]=5
+
+Where on_hand >= 100:
+> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=>=&page[number]=1&page[size]=5
+
+Where on_hand < 100:
+> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=<&page[number]=1&page[size]=5
+
+Where on_hand <= 100:
+> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=<=&page[number]=1&page[size]=5
+
+Where on_hand <> 100:
+> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=<>&page[number]=1&page[size]=5
+```
 
 
+### Stocks
+#### Stock create
+```
+> POST /premex-api/v1/stocks
+```
+- Request
+```
+{
+    "data": {
+        "type": "stocks",
+        "attributes": {
+            "on_hand": "11",
+            "production_date": "2020-05-20"
+        },
+        "relationships": {
+        	"products": {
+        		"data": {
+        			"type": "products",
+        			"id": "3348"
+        		}
+        	}
+        }
+    }
+}
+```
 
+- Response with `201`
+```
+{
+    "data": {
+        "type": "stocks",
+        "id": "7274",
+        "attributes": {
+            "on_hand": "11",
+            "taken": "",
+            "production_date": "2020-05-20",
+            "created_at": "2021-05-22 04:28:37",
+            "updated_at": "2021-05-22 04:28:37"
+        },
+        "relationships": {
+            "products": {
+                "data": {
+                    "type": "products",
+                    "id": "3348"
+                }
+            }
+        }
+    }
+}
+```
 
+- Response with `422`
+```
+{
+    "errors": [
+        {
+            "status": "422",
+            "title": "Unprocessable Entity",
+            "detail": "The on hand field is required.",
+            "source": {
+                "pointer": "/data"
+            }
+        },
+        {
+            "status": "422",
+            "title": "Unprocessable Entity",
+            "detail": "The production date does not match the format Y-m-d.",
+            "source": {
+                "pointer": "/data/attributes/production_date"
+            }
+        },
+        {
+            "status": "422",
+            "title": "Unprocessable Entity",
+            "detail": "The products.id field is required.",
+            "source": {
+                "pointer": "/data"
+            }
+        }
+    ]
+}
+```
 
 
 ## Built With

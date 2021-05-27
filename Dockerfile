@@ -1,4 +1,4 @@
-FROM gcr.io/or-docker-images/laravel:v2.0 as environment
+FROM ericgaonz/laravel:1.0 as environment
 # ---
 FROM environment as build
 ARG BUILD_ENV=production

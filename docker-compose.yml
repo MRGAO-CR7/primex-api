@@ -22,14 +22,14 @@ services:
         networks:
           development-stack:
             aliases:
-                - service.premex-api.v1.docker
+                - service.primex-api.v1.docker
         volumes:
           - ./src:/srv/application
         environment:
           <<: *laravel-env
 
     composer:
-        image: gcr.io/or-docker-images/laravel:v2
+        image: ericgaonz/laravel:1.0
         entrypoint: ['composer']
         working_dir: /container/application
         volumes:
@@ -39,7 +39,7 @@ services:
             - APP_ENV=development
 
     artisan:
-        image: gcr.io/or-docker-images/laravel:v2
+        image: ericgaonz/laravel:1.0
         init: true
         entrypoint: ['php', 'artisan']
         working_dir: /container/application
@@ -51,7 +51,7 @@ services:
             <<: *laravel-env
 
     test:
-        image: gcr.io/or-docker-images/laravel:v2
+        image: ericgaonz/laravel:1.0
         entrypoint: ['php', './vendor/bin/phpunit']
         working_dir: /container/application
         volumes:
@@ -62,7 +62,7 @@ services:
 networks:
     development-stack:
         external:
-            name: ${DEVELOPMENT_STACK_NETWORK:-developmentstack_default}
+            name: ${DEVELOPMENT_STACK_NETWORK:-devstack_default}
 
 volumes:
     composer-data:

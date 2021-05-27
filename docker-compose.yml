@@ -1,7 +1,7 @@
 version: '3.7'
 
 x-laravel-env: &laravel-env
-    APP_NAME: "Primex API"
+    APP_NAME: "PrimeX API"
     APP_ENV: "development"
     APP_KEY: "+83gWjsQKpScFDGt5cLl7eCMO02gsWqa4NFwIbDKrtU="
     APP_DEBUG: "true"

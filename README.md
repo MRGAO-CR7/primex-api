@@ -39,7 +39,7 @@ Steps:
 ### Products
 #### Product create
 ```
-> POST /premex-api/v1/products
+> POST /primex-api/v1/products
 ```
 - Request
 ```
@@ -97,7 +97,7 @@ Steps:
 
 #### Product get
 ```
-> GET /premex-api/v1/products/3348
+> GET /primex-api/v1/products/3348
 ```
 
 - Response with `200`
@@ -135,7 +135,7 @@ Steps:
 
 #### Product get with including stocks
 ```
-> GET /premex-api/v1/products/3348?include=stocks
+> GET /primex-api/v1/products/3348?include=stocks
 ```
 
 - Response with `200`
@@ -213,7 +213,7 @@ Steps:
 
 #### Product stocks get
 ```
-> GET /premex-api/v1/products/3348/stocks
+> GET /primex-api/v1/products/3348/stocks
 ```
 
 - Response with `200`
@@ -264,7 +264,7 @@ Steps:
 
 #### Products get without trashed records
 ```
-> GET /premex-api/v1/products?page[number]=1&page[size]=5
+> GET /primex-api/v1/products?page[number]=1&page[size]=5
 ```
 
 - Response with `200`
@@ -281,9 +281,9 @@ Steps:
         }
     },
     "links": {
-        "first": "http://service.premex-api.v1.docker/products?page%5Bnumber%5D=1&page%5Bsize%5D=5",
-        "next": "http://service.premex-api.v1.docker/products?page%5Bnumber%5D=2&page%5Bsize%5D=5",
-        "last": "http://service.premex-api.v1.docker/products?page%5Bnumber%5D=669&page%5Bsize%5D=5"
+        "first": "http://service.primex-api.v1.docker/products?page%5Bnumber%5D=1&page%5Bsize%5D=5",
+        "next": "http://service.primex-api.v1.docker/products?page%5Bnumber%5D=2&page%5Bsize%5D=5",
+        "last": "http://service.primex-api.v1.docker/products?page%5Bnumber%5D=669&page%5Bsize%5D=5"
     },
     "data": [
         {
@@ -382,7 +382,7 @@ Steps:
 
 #### Products get with trashed records
 ```
-> GET /premex-api/v1/products?filter[withTrashed]=true&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[withTrashed]=true&page[number]=1&page[size]=5
 ```
 
 - Response with `200`
@@ -399,9 +399,9 @@ Steps:
         }
     },
     "links": {
-        "first": "http://service.premex-api.v1.docker/products?filter%5BwithTrashed%5D=true&page%5Bnumber%5D=1&page%5Bsize%5D=5",
-        "next": "http://service.premex-api.v1.docker/products?filter%5BwithTrashed%5D=true&page%5Bnumber%5D=2&page%5Bsize%5D=5",
-        "last": "http://service.premex-api.v1.docker/products?filter%5BwithTrashed%5D=true&page%5Bnumber%5D=670&page%5Bsize%5D=5"
+        "first": "http://service.primex-api.v1.docker/products?filter%5BwithTrashed%5D=true&page%5Bnumber%5D=1&page%5Bsize%5D=5",
+        "next": "http://service.primex-api.v1.docker/products?filter%5BwithTrashed%5D=true&page%5Bnumber%5D=2&page%5Bsize%5D=5",
+        "last": "http://service.primex-api.v1.docker/products?filter%5BwithTrashed%5D=true&page%5Bnumber%5D=670&page%5Bsize%5D=5"
     },
     "data": [
         {
@@ -500,7 +500,7 @@ Steps:
 
 #### Products get only trashed records
 ```
-> GET /premex-api/v1/products?filter[onlyTrashed]=true&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[onlyTrashed]=true&page[number]=1&page[size]=5
 ```
 
 - Response with `200`
@@ -517,8 +517,8 @@ Steps:
         }
     },
     "links": {
-        "first": "http://service.premex-api.v1.docker/products?filter%5BonlyTrashed%5D=true&page%5Bnumber%5D=1&page%5Bsize%5D=5",
-        "last": "http://service.premex-api.v1.docker/products?filter%5BonlyTrashed%5D=true&page%5Bnumber%5D=1&page%5Bsize%5D=5"
+        "first": "http://service.primex-api.v1.docker/products?filter%5BonlyTrashed%5D=true&page%5Bnumber%5D=1&page%5Bsize%5D=5",
+        "last": "http://service.primex-api.v1.docker/products?filter%5BonlyTrashed%5D=true&page%5Bnumber%5D=1&page%5Bsize%5D=5"
     },
     "data": [
         {
@@ -545,7 +545,7 @@ Steps:
 
 #### Product update
 ```
-> PATCH /premex-api/v1/products/3346
+> PATCH /primex-api/v1/products/3346
 ```
 - Request
 ```
@@ -588,7 +588,7 @@ Steps:
 
 #### Product update - soft-deleting
 ```
-> PATCH /premex-api/v1/products/3345
+> PATCH /primex-api/v1/products/3345
 ```
 - Request
 ```
@@ -629,7 +629,7 @@ Steps:
 
 #### Product update - soft-deleting restore
 ```
-> PATCH /premex-api/v1/products/3345
+> PATCH /primex-api/v1/products/3345
 ```
 - Request
 ```
@@ -670,7 +670,7 @@ Steps:
 
 #### Product update - force-deleting
 ```
-> PATCH /premex-api/v1/products/3345
+> PATCH /primex-api/v1/products/3345
 ```
 - Request
 ```
@@ -692,38 +692,38 @@ Steps:
 #### Products get - sort products by stock onHand by both ASC or DESC order
 ```
 DESC:
-> GET /premex-api/v1/products?sort=-on_hand&filter[withTrashed]=true&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?sort=-on_hand&filter[withTrashed]=true&page[number]=1&page[size]=5
 
 ASC:
-> GET /premex-api/v1/products?sort=on_hand&filter[withTrashed]=true&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?sort=on_hand&filter[withTrashed]=true&page[number]=1&page[size]=5
 ```
 
 #### Products get - filter products by stock availability
 ```
 Where on_hand = 100:
-> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]==&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[quantity]=100&filter[operator]==&page[number]=1&page[size]=5
 
 Where on_hand > 100:
-> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=>&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[quantity]=100&filter[operator]=>&page[number]=1&page[size]=5
 
 Where on_hand >= 100:
-> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=>=&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[quantity]=100&filter[operator]=>=&page[number]=1&page[size]=5
 
 Where on_hand < 100:
-> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=<&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[quantity]=100&filter[operator]=<&page[number]=1&page[size]=5
 
 Where on_hand <= 100:
-> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=<=&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[quantity]=100&filter[operator]=<=&page[number]=1&page[size]=5
 
 Where on_hand <> 100:
-> GET /premex-api/v1/products?filter[quantity]=100&filter[operator]=<>&page[number]=1&page[size]=5
+> GET /primex-api/v1/products?filter[quantity]=100&filter[operator]=<>&page[number]=1&page[size]=5
 ```
 
 
 ### Stocks
 #### Stock create
 ```
-> POST /premex-api/v1/stocks
+> POST /primex-api/v1/stocks
 ```
 - Request
 ```
